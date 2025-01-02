@@ -1,0 +1,900 @@
+"Основы SQL"
+
+1. Select*from actor;
+
+2. Select sex, body_mass_g from little_penguins order by body_mass_g desc;
+
+3. select*from address where postal_code is null order by address_id asc;
+
+4. Select name from language order by name asc;
+
+5.Select first_name, last_name from actor;
+
+6.Select name from language;
+
+7.Select title from film order by title asc;
+
+8.Select last_name, first_name, email from customer order by last_name asc;
+
+9.Select distinct rating from film order by rating asc;
+
+10. Select title from film order by length desc limit 5; 
+
+11. Select title, description, release_year from film order by title asc limit 10;
+
+12. Select title, description, release_year from film order by title asc limit 10 offset 20;
+
+13. Select title, rental_rate, length from film order by rental_rate desc, length asc;
+
+14. Select title, release_year from film order by length desc, replacement_cost asc limit 1;
+
+15. Select title, description, length from film where length>180 order by length;
+
+16.SELECT*from staff where store_id=1;
+
+17.Select customer_id, first_name, last_name from customer where active=1;
+
+18.Select*from actor where first_name='Scarlett';
+
+19.Select title from film where description like '%Student%' order by title asc;
+
+20.Select title, release_year, length from film where length>180 order by length asc;
+
+21. Select film.title, film.release_year, film.length 
+	from film 
+	join film_category on film.film_id=film_category.film_id 
+	join category on film_category.category_id=category.category_id 
+	where film.length>180 and category.name='Comedy' order by length;
+
+22. Select last_name, first_name, email 
+	from customer where first_name not like '%A%' and last_name not like '%A%' order by customer_id;
+
+23. Select title, description, release_year 
+	from film where rating='NC-17' and description like '%Database Administrator%' order by release_year asc;
+
+24. Select title, description, release_year 
+	from film 
+	where (description like '%Dog%' or description like '%Cat%') and (rating='PG' or rating='PG-13') order by title asc;
+
+25. Select title, rating from film where rating='R' or rating='NC-17' order by title;
+
+26. Select title, rating from film where (rating='PG' or rating='PG-13') order by title;
+
+27. Select employee.emp_no, employee.first_name, employee.last_name, employee.hire_date, employee.job_code
+	from employee 
+	join employee_project on employee.emp_no=employee_project.emp_no 
+	join project on employee_project.proj_id=project.proj_id 
+	where project.proj_name='Video Database' 
+	order by last_name asc, job_code; 
+	
+28. Select*from employee where not job_country='USA';
+
+29. Select full_name, hire_date 
+	from employee 
+	where (hire_date>='1992-01-01 00:00:00' and hire_date<='1992-12-31 00:00:00') order by hire_date asc;
+
+30. Select film.title as film_title from film
+	left join inventory on film.film_id=inventory.film_id (left join нужно, а не просто join, т.к. нужно вывести значения NULL)
+	where store_id is null
+	order by title asc;
+ 	
+31. SELECT language.name AS language 
+	FROM language
+	LEFT JOIN film ON language.language_id = film.language_id
+	WHERE film.language_id IS NULL
+	ORDER BY language.name ASC;
+
+32. Select film.title, category.name from film
+	join film_category on film.film_id=film_category.film_id
+	join category on film_category.category_id=category.category_id;
+
+33. Select email, substring_index(email, '@', 1) as address, substring_index(email,'@',-1) as domain from customer order by email;
+	
+34. describe address; OR show columns from address;
+
+35. show index from film;
+
+36. Select film.title, film.release_year
+	from film 
+	left join film_actor on film.film_id=film_actor.film_id
+	left join actor on film_actor.actor_id=actor.actor_id
+	where actor.actor_id is null
+	order by film.title;
+	
+37. Select c1.customer_id, c1.first_name, c1.last_name, c2.customer_id, c2.first_name, c2.last_name
+	from customer c1 join customer c2 on c1.first_name=c2.last_name
+	order by c1.customer_id;
+	
+38. SELECT r.rental_date AS meet_time, s.store_id,
+    GROUP_CONCAT(DISTINCT CONCAT(c.first_name, ' ', c.last_name) ORDER BY c.last_name SEPARATOR ',') AS customers
+	FROM rental r
+	JOIN customer c ON r.customer_id = c.customer_id
+	JOIN staff s ON r.staff_id = s.staff_id
+	GROUP BY r.rental_date, s.store_id
+	HAVING COUNT(DISTINCT c.customer_id) > 1
+	ORDER BY meet_time, store_id;
+
+39. Select film.title from film
+	left join inventory on film.film_id=inventory.film_id
+	left join rental on inventory.inventory_id=rental.inventory_id
+	where rental.rental_id is null and inventory.store_id is not null
+	order by film.title asc;
+	
+40. Select film.film_id, film.title, category.name as category from film
+	join film_category on film.film_id=film_category.film_id
+	join category on film_category.category_id=category.category_id
+	where category.name='Comedy'
+	union
+	Select film.film_id, film.title, category.name as category from film
+	join film_category on film.film_id=film_category.film_id
+	join category on film_category.category_id=category.category_id
+	where category.name='Music'
+	union
+	Select film.film_id, film.title, category.name as category from film
+	join film_category on film.film_id=film_category.film_id
+	join category on film_category.category_id=category.category_id
+	where category.name='Travel'
+	order by film_id;
+	
+41. Select first_name, last_name 
+	from customer where left(first_name, 1)=left(last_name, 1) 
+	order by first_name, last_name;
+
+42. Select film.title, film.rating from film
+	join inventory on film.film_id=inventory.film_id
+	join rental on inventory.inventory_id=rental.inventory_id
+	join customer on rental.customer_id=customer.customer_id
+	Where customer.first_name='katie' and customer.last_name='elliott'
+	order by case when film.rating='R' then 0 else 1 end, film.title asc, rating asc;
+
+"ВЫЧИСЛЕНИЯ"
+
+1. Select PI()*7 as circle_perimeter;
+
+2. select PI()*(12*12) as circle_area;
+
+3. SELECT round(sqrt(2*2+3*3)::numeric, 3) as hypotenuse;
+
+4. WITH RECURSIVE FactorialCTE AS
+	(
+    SELECT 0 AS n, 1 AS f
+    UNION ALL
+    SELECT n + 1, (n + 1) * f
+    FROM FactorialCTE
+    WHERE n < 10
+	)
+	SELECT n, f
+	FROM FactorialCTE
+	ORDER BY n;
+	
+5.	SELECT 
+    JSON_OBJECT('id', f.film_id, 'title', f.title, 'category', c.name) AS attribute
+	FROM film f
+	JOIN film_category on f.film_id=film_category.film_id
+	JOIN category c ON film_category.category_id = c.category_id
+	ORDER BY f.film_id;
+	
+6. SELECT 
+    address_id, 
+    postal_code
+	FROM 
+    address
+	WHERE 
+    postal_code % 2 = 0
+	ORDER BY 
+    address_id;
+	
+7.	SELECT 
+    'employee' AS record_type,
+    last_name,
+    first_name,
+    email
+	FROM 
+    staff
+    UNION ALL
+	SELECT 
+    'customer' AS record_type,
+    last_name,
+    first_name,
+    email
+	FROM 
+    customer
+	ORDER BY 
+    last_name, 
+    first_name;
+	
+8.	SELECT 
+    f.title,
+    r.rental_date,
+    r.return_date,
+    p.payment_date,
+    f.rental_rate,
+    (p.amount - f.rental_rate) AS lateness_penalty,
+    p.amount 
+	FROM 
+    payment p
+	JOIN 
+    rental r ON p.rental_id = r.rental_id
+	JOIN 
+    customer c ON r.customer_id = c.customer_id
+	JOIN 
+    inventory i ON r.inventory_id = i.inventory_id
+	JOIN 
+    film f ON i.film_id = f.film_id
+	WHERE 
+    c.first_name = 'Dorothy' 
+    AND c.last_name = 'Taylor'
+    AND p.payment_date BETWEEN '2005-08-01' AND '2005-08-31'
+	ORDER BY 
+    p.payment_date
+
+	UNION ALL
+
+	SELECT 
+    'Total' AS title,
+    NULL AS rental_date,
+    NULL AS return_date,
+    NULL AS payment_date,
+    NULL AS rental_rate,
+    SUM(p.amount - f.rental_rate) AS lateness_penalty,
+    SUM(p.amount) AS amount
+	FROM 
+    payment p
+	JOIN 
+    rental r ON p.rental_id = r.rental_id
+	JOIN 
+    customer c ON r.customer_id = c.customer_id
+	OIN 
+    inventory i ON r.inventory_id = i.inventory_id
+	JOIN 
+    film f ON i.film_id = f.film_id
+	WHERE 
+    c.first_name = 'Dorothy' 
+    AND c.last_name = 'Taylor'
+    AND p.payment_date BETWEEN '2005-08-01' AND '2005-08-31';
+	
+9.	select last_name from actor intersect 
+	select last_name from customer;
+	
+10.	SELECT first_name
+	FROM customer
+	WHERE first_name = REVERSE(first_name)
+	ORDER BY first_name;
+	
+11. SELECT CONCAT(UPPER(LEFT(last_name, 1)), LOWER(SUBSTRING(last_name, 2)), ' ', LEFT(first_name, 1), '.') AS customer_name
+	FROM customer
+	ORDER BY last_name;
+	
+12. SELECT 
+    film_id,
+    title,
+    ROUND(rental_rate / 1.18, 2) AS rental_rate_before_tax,
+    ROUND(rental_rate - (rental_rate / 1.18), 2) AS tax,
+    ROUND(rental_rate, 2) AS rental_rate
+	FROM 
+    film
+	ORDER BY 
+    film_id;
+	
+13. SELECT 
+    film_id,
+    title,
+    CONCAT(FLOOR(length / 60), 'h ', MOD(length, 60), 'm') AS film_length
+	FROM 
+    film
+	ORDER BY 
+    film_id;
+	
+14. SELECT DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 1 DAY), '%Y-%m-%d') AS tomorrow;
+
+15.	SELECT 
+	DATE_FORMAT(DATE_FORMAT(NOW() ,'%Y-%m-01'), '%Y-%m-%d') AS first_of_month,
+	DATE_FORMAT(LAST_DAY(NOW()), '%Y-%m-%d') AS last_of_month;
+   
+16.	SELECT 
+    DATE_FORMAT(CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY, '%Y-%m-%d') AS last_monday,
+    DATE_FORMAT(CURDATE() + INTERVAL (6 - WEEKDAY(CURDATE())) DAY, '%Y-%m-%d') AS next_sunday;
+	
+"Агрегатные функции"
+
+1. Select sum(leng	)/count(film_id) as avg_film_length from film;
+
+2. Select min(replacement_cost) as minimal_replacement_cost, max(replacement_cost) as maximal_replacement_cost from film;
+
+3. SELECT 
+   ROUND(AVG(DATEDIFF(return_date, rental_date))) AS average_rental_time
+	FROM 
+    rental;
+	
+4.	SELECT 
+	AVG(DATEDIFF(return_date, rental_date)) AS average_rental_time
+	FROM 
+    rental;
+	
+5. 	SELECT 
+    d.DEPARTMENT, 
+    COUNT(e.EMP_NO) AS EMP_COUNT
+	FROM 
+    department d
+	LEFT JOIN 
+    employee e ON d.DEPT_NO = e.DEPT_NO
+	GROUP BY 
+    d.DEPARTMENT
+	ORDER BY 
+    EMP_COUNT DESC;
+	
+6.	SELECT 
+    c.name AS category, 
+    COUNT(fc.film_id) AS film_count
+	FROM 
+    category c
+	LEFT JOIN 
+    film_category fc ON c.category_id = fc.category_id
+	GROUP BY 
+    c.name
+	ORDER BY 
+    c.name ASC;
+	
+7.	SELECT 
+    c.name AS category, 
+    AVG(f.rental_rate) AS avg_rental_rate
+	FROM 
+    category c
+	JOIN 
+    film_category fc ON c.category_id = fc.category_id
+	JOIN 
+    film f ON fc.film_id = f.film_id
+	GROUP BY 
+    c.name
+	ORDER BY 
+    avg_rental_rate DESC;
+	
+8.	SELECT 
+    c.name AS category,
+    MIN(f.length) AS min_length,
+    MAX(f.length) AS max_length,
+    AVG(f.length) AS avg_length
+	FROM 
+    category c
+	JOIN 
+    film_category fc ON c.category_id = fc.category_id
+	JOIN 
+    film f ON fc.film_id = f.film_id
+	GROUP BY 
+    c.name
+	ORDER BY 
+    c.name ASC;
+	
+9.	SELECT 
+    c.name AS category,
+    AVG(f.length) AS avg_length
+	FROM 
+    category c
+	JOIN 
+    film_category fc ON c.category_id = fc.category_id
+	JOIN 
+    film f ON fc.film_id = f.film_id
+	GROUP BY 
+    c.name
+	HAVING 
+    AVG(f.length) > 120
+	ORDER BY 
+    avg_length DESC;
+	
+10.	SELECT 
+    f.title AS title,
+    COUNT(r.rental_id) AS rentals_count
+FROM 
+    film f
+JOIN 
+    inventory i ON f.film_id = i.film_id
+LEFT JOIN 
+    rental r ON i.inventory_id = r.inventory_id
+GROUP BY 
+    f.film_id, f.title
+HAVING 
+    COUNT(r.rental_id) = (
+        SELECT 
+            MIN(rentals_count)
+        FROM (
+            SELECT 
+                COUNT(r.rental_id) AS rentals_count
+            FROM 
+                film f
+            JOIN 
+                inventory i ON f.film_id = i.film_id
+            LEFT JOIN 
+                rental r ON i.inventory_id = r.inventory_id
+            GROUP BY 
+                f.film_id
+        ) AS subquery
+    )
+ORDER BY 
+    f.title ASC
+LIMIT 3;
+
+11. SELECT 
+    c.first_name,
+    c.last_name,
+    SUM(p.amount) AS total_pay
+	FROM 
+    customer c
+	JOIN 
+    payment p ON c.customer_id = p.customer_id
+	GROUP BY 
+    c.customer_id
+	ORDER BY 
+    total_pay DESC
+	LIMIT 3;
+	
+12. SELECT 
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    CEIL(AVG(DATEDIFF(r.return_date, r.rental_date))) AS average_rental_time
+	FROM 
+    customer c
+	JOIN 
+    rental r ON c.customer_id = r.customer_id
+	GROUP BY 
+    c.customer_id, c.first_name, c.last_name
+	ORDER BY 
+    c.customer_id;
+	
+13.	SELECT 
+    DATE_FORMAT(payment_date, '%Y-%m') AS payment_month,
+    SUM(amount) AS payment_amount
+	FROM 
+    payment
+	GROUP BY 
+    payment_month
+	ORDER BY 
+    payment_month DESC;
+	
+14.	SELECT 
+    c.name AS category,
+    SUM(CASE WHEN i.store_id = 1 THEN 1 ELSE 0 END) AS store_1,
+    SUM(CASE WHEN i.store_id = 2 THEN 1 ELSE 0 END) AS store_2
+	FROM 
+    category c
+	JOIN 
+    film_category fc ON c.category_id = fc.category_id
+	JOIN 
+    film f ON fc.film_id = f.film_id
+	JOIN 
+    inventory i ON f.film_id = i.film_id
+	JOIN 
+    store s ON i.store_id = s.store_id
+	GROUP BY 
+    c.name
+	ORDER BY 
+    c.name;
+	
+15.	SELECT 
+    e.EMP_NO,
+    e.FIRST_NAME,
+    e.LAST_NAME,
+    EXTRACT(YEAR FROM sh.CHANGE_DATE) AS CHANGES_YEAR,
+    COUNT(*) AS CHANGES_COUNT
+	FROM 
+    employee e
+	JOIN 
+    salary_history sh ON e.EMP_NO = sh.EMP_NO
+	GROUP BY 
+    e.EMP_NO,
+    e.FIRST_NAME,
+    e.LAST_NAME,
+    EXTRACT(YEAR FROM sh.CHANGE_DATE)
+	HAVING 
+    COUNT(*) > 1
+	ORDER BY 
+    e.EMP_NO;
+	
+16. SELECT 
+    d.DEPARTMENT,
+    MIN(CAST(e.SALARY AS FLOAT)) / NULLIF(MAX(CAST(e.SALARY AS FLOAT)), 0) AS SALARY_DIFF_RATIO
+	FROM 
+    department d
+	JOIN 
+    employee e ON d.DEPT_NO = e.DEPT_NO
+	GROUP BY 
+    d.DEPARTMENT
+	HAVING 
+    MAX(CAST(e.SALARY AS FLOAT)) > 0
+	ORDER BY 
+    SALARY_DIFF_RATIO DESC;
+	
+17. SELECT 
+    s.store_id,
+    SUM(CASE 
+        WHEN EXTRACT(MONTH FROM p.payment_date) IN (1, 2, 3) THEN p.amount 
+        ELSE 0 
+    END) AS "I",  -- доход за I квартал
+    SUM(CASE 
+        WHEN EXTRACT(MONTH FROM p.payment_date) IN (4, 5, 6) THEN p.amount 
+        ELSE 0 
+    END) AS "II", -- доход за II квартал
+    SUM(CASE 
+        WHEN EXTRACT(MONTH FROM p.payment_date) IN (7, 8, 9) THEN p.amount 
+        ELSE 0 
+    END) AS "III", -- доход за III квартал
+    SUM(CASE 
+        WHEN EXTRACT(MONTH FROM p.payment_date) IN (10, 11, 12) THEN p.amount 
+        ELSE 0 
+    END) AS "IV"  -- доход за IV квартал
+FROM 
+    store s
+JOIN 
+    staff st ON s.store_id = st.store_id
+JOIN 
+    payment p ON st.staff_id = p.staff_id
+WHERE 
+    p.payment_date >= '2005-01-01' AND p.payment_date < '2006-01-01'
+GROUP BY 
+    s.store_id
+ORDER BY 
+    s.store_id;
+	
+18. SELECT 
+    co.country, 
+    COUNT(cu.customer_id) AS customers_count
+FROM 
+    country co
+JOIN 
+    city ci ON ci.country_id = co.country_id
+JOIN 
+    address a ON a.city_id = ci.city_id
+JOIN 
+    customer cu ON cu.address_id = a.address_id
+GROUP BY 
+    co.country
+ORDER BY 
+    customers_count DESC
+LIMIT 3;
+
+19. SELECT 
+    i.store_id,
+    COUNT(i.inventory_id) AS rented_at_2005_05_31
+FROM 
+    inventory i
+LEFT JOIN 
+    rental r ON i.inventory_id = r.inventory_id 
+    AND r.rental_date <= '2005-05-31 00:00:00' 
+WHERE 
+    (r.return_date > '2005-05-31 00:00:00' OR r.return_date IS NULL)
+OR 
+    (r.rental_date IS NULL)
+GROUP BY 
+    i.store_id
+ORDER BY 
+    i.store_id ASC;
+	
+20. SELECT 
+    s.store_id, 
+    COUNT(r.rental_id) AS returned_at_2005_06_01
+FROM 
+    rental r
+JOIN 
+    inventory i ON r.inventory_id = i.inventory_id
+JOIN 
+    store s ON i.store_id = s.store_id
+WHERE 
+    r.return_date = '2005-06-01'
+GROUP BY 
+    s.store_id
+ORDER BY 
+    s.store_id ASC;
+	
+21. SELECT 
+    a.last_name,
+    GROUP_CONCAT(a.first_name ORDER BY a.first_name SEPARATOR ', ') AS first_names
+FROM 
+    actor a
+GROUP BY 
+    a.last_name
+HAVING 
+    COUNT(*) > 1
+ORDER BY 
+    a.last_name ASC;
+	
+22. SELECT 
+    f.title AS title,
+    GROUP_CONCAT(CONCAT(a.first_name, ' ', a.last_name) ORDER BY a.first_name, a.last_name SEPARATOR ', ') AS actors
+FROM 
+    film f
+JOIN 
+    film_actor fa ON f.film_id = fa.film_id
+JOIN 
+    actor a ON fa.actor_id = a.actor_id
+GROUP BY 
+    f.film_id
+ORDER BY 
+    COUNT(a.actor_id) DESC;
+	
+23. SELECT 
+    a.first_name,
+    a.last_name,
+    COUNT(fa.film_id) AS film_count
+FROM 
+    film AS f
+JOIN 
+    film_actor AS fa ON f.film_id = fa.film_id
+JOIN 
+    actor AS a ON fa.actor_id = a.actor_id
+WHERE 
+    f.title = 'ARIZONA BANG'
+GROUP BY 
+    a.actor_id
+ORDER BY 
+    film_count DESC;
+	
+24. WITH rentals_in_august AS (
+    SELECT 
+        customer_id, 
+        EXTRACT(WEEK FROM rental_date) AS week_num
+    FROM 
+        rental
+    WHERE 
+        rental_date >= '2005-08-01' AND rental_date < '2005-09-01'
+)
+
+SELECT 
+    week_num,
+    COUNT(customer_id) * 1.0 / COUNT(DISTINCT customer_id) AS weekly_average_rental_count
+FROM 
+    rentals_in_august
+GROUP BY 
+    week_num
+ORDER BY 
+    week_num;
+	
+25. SELECT 
+    c.first_name,
+    c.last_name,
+    f.title,
+    MIN(r.rental_date) AS first_rental_date,
+    MAX(r.rental_date) AS last_rental_date,
+    COUNT(r.rental_id) AS rentals_count
+FROM 
+    customer AS c
+JOIN 
+    rental AS r ON c.customer_id = r.customer_id
+JOIN 
+    inventory AS i ON r.inventory_id = i.inventory_id
+JOIN 
+    film AS f ON i.film_id = f.film_id
+GROUP BY 
+    c.customer_id, f.film_id
+HAVING 
+    COUNT(r.rental_id) > 1
+ORDER BY 
+    f.title;
+	
+26. SELECT 
+    f.film_id,
+    f.title,
+    i.store_id,
+    COUNT(i.inventory_id) AS quantity
+FROM 
+    inventory i
+JOIN 
+    film f ON i.film_id = f.film_id
+GROUP BY 
+    f.film_id, 
+    f.title, 
+    i.store_id
+HAVING 
+    COUNT(i.inventory_id) > 0
+    AND COUNT(i.store_id) = 1
+ORDER BY 
+    f.title;
+	
+27. SELECT DISTINCT f.film_id, f.title
+FROM film f
+JOIN inventory i ON f.film_id = i.film_id
+JOIN rental r ON i.inventory_id = r.inventory_id
+WHERE r.return_date IS NULL
+  AND r.rental_date <= '2005-05-31 12:00:00'
+  AND (r.rental_date + INTERVAL r.rental_duration DAY) > '2005-05-31 12:00:00'
+ORDER BY f.title;
+
+28. SELECT c.name AS category_name, COUNT(f.film_id) AS film_count
+FROM category c
+LEFT JOIN film_category fc ON c.category_id = fc.category_id
+LEFT JOIN film f ON fc.film_id = f.film_id
+GROUP BY c.name;
+
+29. SELECT 
+    f.title AS most_rented_movie
+FROM 
+    rental r
+JOIN 
+    inventory i ON r.inventory_id = i.inventory_id
+JOIN 
+    film f ON i.film_id = f.film_id
+WHERE 
+    r.rental_date >= '2006-02-01' AND r.rental_date < '2006-03-01'
+GROUP BY 
+    f.title
+ORDER BY 
+    COUNT(r.rental_id) DESC
+LIMIT 1;
+
+30. WITH Rentals_2005 AS (
+    SELECT 
+        r.rental_id,
+        r.rental_date,
+        i.film_id,
+        c.category_id
+    FROM 
+        rental r
+    JOIN 
+        inventory i ON r.inventory_id = i.inventory_id
+    JOIN 
+        film f ON i.film_id = f.film_id
+    JOIN 
+        film_category fc ON f.film_id = fc.film_id
+    JOIN 
+        category c ON fc.category_id = c.category_id
+    WHERE 
+        YEAR(r.rental_date) = 2005
+),
+Film_Rentals AS (
+    SELECT 
+        c.name AS category,
+        f.title AS film_title,
+        COUNT(r.rental_id) AS rentals_count
+    FROM 
+        Rentals_2005 r
+    JOIN 
+        film f ON r.film_id = f.film_id
+    JOIN 
+        category c ON r.category_id = c.category_id
+    GROUP BY 
+        c.name, f.title
+),
+Max_Rentals AS (
+    SELECT 
+        category,
+        film_title,
+        rentals_count,
+        RANK() OVER (PARTITION BY category ORDER BY rentals_count DESC, film_title ASC) AS rank
+    FROM 
+        Film_Rentals
+)
+SELECT 
+    category,
+    STRING_AGG(film_title, ', ') AS most_rented_films,
+    MAX(rentals_count) AS rentals_count
+FROM 
+    Max_Rentals
+WHERE 
+    rank = 1
+GROUP BY 
+    category
+ORDER BY 
+    category;
+	
+31. SELECT 
+    cat.name AS category,
+    AVG(f.rental_rate) AS avg_rental_rate,
+    AVG(p.amount) AS avg_payment_amount,
+    (AVG(p.amount) - AVG(f.rental_rate)) AS difference
+FROM 
+    category AS cat
+JOIN 
+    film_category AS fc ON cat.category_id = fc.category_id
+JOIN 
+    film AS f ON fc.film_id = f.film_id
+JOIN 
+    inventory AS i ON f.film_id = i.film_id
+JOIN 
+    rental AS r ON i.inventory_id = r.inventory_id
+JOIN 
+    payment AS p ON r.rental_id = p.rental_id
+GROUP BY 
+    cat.name
+ORDER BY 
+    difference DESC;
+	
+"Подзапросы"
+
+1. SELECT address, postal_code
+FROM address
+WHERE city = 'London';
+
+2. SELECT DISTINCT c.last_name, c.first_name
+FROM customer c
+WHERE c.customer_id NOT IN (
+    SELECT DISTINCT r.customer_id
+    FROM rental r
+    JOIN inventory i ON r.inventory_id = i.inventory_id
+    JOIN film f ON i.film_id = f.film_id
+    JOIN film_category fc ON f.film_id = fc.film_id
+    JOIN actor a ON f.film_id = a.film_id
+    WHERE a.first_name = 'EMILY' AND a.last_name = 'DEE'
+)
+ORDER BY c.last_name;
+
+3. SELECT film_id, title, replacement_cost
+FROM film
+WHERE replacement_cost = (SELECT MAX(replacement_cost) FROM film)
+ORDER BY film_id ASC;
+
+4. SELECT 
+    f.film_id, 
+    f.title, 
+    f.rental_rate 
+FROM 
+    film f 
+WHERE 
+    f.rental_rate > (SELECT AVG(rental_rate) FROM film) 
+ORDER BY 
+    f.rental_rate DESC;
+	
+5. SELECT 
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    COUNT(r.rental_id) AS rental_count
+FROM 
+    customer c
+JOIN 
+    rental r ON c.customer_id = r.customer_id
+GROUP BY 
+    c.customer_id, c.first_name, c.last_name
+HAVING 
+    COUNT(r.rental_id) > (
+        SELECT 
+            AVG(rental_count) 
+        FROM (
+            SELECT 
+                COUNT(rental_id) AS rental_count 
+            FROM 
+                rental 
+            GROUP BY 
+                customer_id
+        ) AS avg_rentals
+    )
+ORDER BY 
+    rental_count DESC;
+	
+6. SELECT 
+    f.film_id,
+    f.title,
+    DATEDIFF(r.return_date, r.rental_date) AS average_rental_time
+FROM 
+    film f
+JOIN 
+    rental r ON f.film_id = r.inventory_id
+WHERE 
+    DATEDIFF(r.return_date, r.rental_date) < (
+        SELECT 
+            ROUND(AVG(DATEDIFF(return_date, rental_date))) 
+        FROM 
+            rental
+    )
+ORDER BY 
+    f.film_id;
+	
+7. SELECT title, release_year
+FROM film f
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM film_actor fa
+    WHERE fa.film_id = f.film_id
+)
+ORDER BY title;
+	
+8. SELECT a.first_name, a.last_name
+FROM actor a
+WHERE a.actor_id NOT IN (
+    SELECT DISTINCT fa.actor_id
+    FROM film_actor fa
+    JOIN film f ON fa.film_id = f.film_id
+    JOIN film_category fc ON f.film_id = fc.film_id
+    JOIN category c ON fc.category_id = c.category_id
+    WHERE c.name = 'NC-17'
+)
+ORDER BY a.last_name;
+
