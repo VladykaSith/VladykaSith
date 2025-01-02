@@ -9,19 +9,19 @@ As a beginner software development Quality Control (QC) engineer, I possess a so
   <summary>**⚡Languages and Tools**</summary>
 Key Skills:
 
-1. Theory of Software Testing: I have a comprehensive understanding of the principles and methodologies of software testing, including black box testing, white box testing, and gray box testing.
+1. **Theory of Software Testing**: I have a comprehensive understanding of the principles and methodologies of software testing, including black box testing, white box testing, and gray box testing.
 
-2. Jira: I have hands-on experience with Jira, including creating and managing test cases, test plans, and test cycles.
+2. **Jira**: I have hands-on experience with Jira, including creating and managing test cases, test plans, and test cycles.
 
-3. MySQL: I am proficient in using MySQL for database management, including creating and querying databases.
+3. **MySQL**: I am proficient in using MySQL for database management, including creating and querying databases.
 
-4. Git Bash: I am familiar with using Git Bash for version control, including creating repositories, committing changes, and resolving conflicts.
+4. **Git Bash**: I am familiar with using Git Bash for version control, including creating repositories, committing changes, and resolving conflicts.
 
-5. Test IT: I have experience with Test IT, a test management tool that helps streamline the testing process.
+5. **Test IT**: I have experience with Test IT, a test management tool that helps streamline the testing process.
 
-6. Postman API: I have knowledge of Postman API, a tool used for testing APIs.
+6. **Postman API**: I have knowledge of Postman API, a tool used for testing APIs.
 
-7. DevTools: I possess basic skills in using Browser Developer Tools (DevTools) to inspect elements, debug code, and analyze web performance.
+7. **DevTools**: I possess basic skills in using Browser Developer Tools (DevTools) to inspect elements, debug code, and analyze web performance.
 
 </details>
 
