@@ -27,8 +27,10 @@ Key Skills:
 
 <details>
   <summary>**📕Education**</summary>
+
 Master's Degree in Mechanical Engineering
 Education Period: September 2006 - July 2011
+
 
 Bachelor's Degree in Language Education
 Major: Principles and Methods of Language Education
