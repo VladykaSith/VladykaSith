@@ -51,6 +51,4 @@ Engineer-Designer
 OOO “Tesar - Ecogal” - Saratov, Russia
 July 2011 – November 2011)
 
-📫 ![Contacts]
-Mobile Phone: +79266448193
-email: Naumov_Vladyka@mail.ru
+📫 [Contacts](email: Naumov_Vladyka@mail.ru)
