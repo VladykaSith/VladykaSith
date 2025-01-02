@@ -9,6 +9,14 @@ As a beginner software development Quality Control (QC) engineer, I possess a so
 </details>
 
 <details>
+<summary>**🧾Portfolio**</summary>
+- [MySQLqueries.txt](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/MySQLqueries.txt)
+- [Yandex_Test_1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Yandex_Test%20_1.xlsx)
+- [HTML_practice.html](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/HTML_practice.html)
+- [Decisions_table.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Decisions_table.xlsx)
+</details>
+
+<details>
 <summary>**⚡Languages and Tools**</summary>
 
 
