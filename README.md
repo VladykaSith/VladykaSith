@@ -1,4 +1,4 @@
-!⭐[Header](https://github.com/VladykaSith/VladykaSith/blob/main/assets/Header.jpg)
+⭐![Header](https://github.com/VladykaSith/VladykaSith/blob/main/assets/Header.jpg)
 
 🧑About me
 
