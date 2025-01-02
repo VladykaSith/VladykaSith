@@ -87,7 +87,9 @@ July 2011 – November 2011
   <summary>**📫 Contacts**</summary>
 
 Telegram: @VladykaSamurai
+
 email: Naumov_Vladyka@mail.ru
+
 LinkedIN: https://www.linkedin.com/in/vladislav-naumov-a4074a2a6/
   
 </details>
