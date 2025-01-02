@@ -1,14 +1,14 @@
 [![Header](https://github.com/VladykaSith/VladykaSith/blob/main/assets/Header.jpg)](https://www.linkedin.com/in/vladislav-naumov-a4074a2a6/)
 
 <details>
-  <summary>**🧑About me**</summary>
+<summary>**🧑About me**</summary>
 
 | 
 As a beginner software development Quality Control (QC) engineer, I possess a solid foundation in the theoretical aspects of software testing and have developed proficiency in a range of essential tools and technologies.
 </details>
 
 <details>
-  <summary>**⚡Languages and Tools**</summary>
+<summary>**⚡Languages and Tools**</summary>
 
 | 
 Key Skills:
