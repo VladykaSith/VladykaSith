@@ -2,6 +2,8 @@
 
 <details>
   <summary>**🧑About me**</summary>
+
+  
 As a beginner software development Quality Control (QC) engineer, I possess a solid foundation in the theoretical aspects of software testing and have developed proficiency in a range of essential tools and technologies.
 </details>
 
@@ -28,6 +30,7 @@ Key Skills:
 <details>
   <summary>**📕Education**</summary>
 
+
 Master's Degree in Mechanical Engineering
 Education Period: September 2006 - July 2011
 
@@ -45,6 +48,8 @@ Completed 120-hour course in January 2025
 
 <details>
 <summary>**💼Experience**</summary>
+
+
 English Teacher
 Global Education International Kindergarten (Jinding) - Beijing, China
 February 2015 – October 2024
@@ -64,6 +69,8 @@ July 2011 – November 2011
 
 <details>
   <summary>**📫 Contacts**</summary>
+
+
 email: Naumov_Vladyka@mail.ru
   
 </details>
