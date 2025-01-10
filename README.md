@@ -11,7 +11,7 @@ As a beginner software development Quality Control (QC) engineer, I possess a so
 <details>
 <summary><strong>🧾 Portfolio</strong></summary>
 
-- [YaTest1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Yandex_Test%20_1.xlsx)
+- [YaTestCases1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Yandex_Test%20_1.xlsx)
 - [TestCase_for_step4.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/TestCase_for_step4.xlsx)
 - [Bug_report1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Bug_report1.xlsx)
 - [MySQLqueries.txt](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/MySQLqueries.txt)
