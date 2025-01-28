@@ -13,6 +13,7 @@ As a beginner software development Quality Control (QC) engineer, I possess a so
 
 - [YaTestCases1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Yandex_Test%20_1.xlsx)
 - [TestCase_for_step4.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/TestCase_for_step4.xlsx)
+- [Test-Suite (Quotes)](https://docs.google.com/spreadsheets/d/1uK5xQgnahkrAPd4w4ZNFdAGBBxGgAxyjLxPXTVcjQ2M/edit?usp=sharing)
 - [Bug_report1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Bug_report1.xlsx)
 - [MySQLqueries.txt](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/MySQLqueries.txt)
 - [Pet_Store_API_Testing](https://www.postman.com/vladykasith/workspace/vlad/collection/40437859-fb10fb52-c070-493e-ad99-529113b9a465?action=share&creator=40437859)
