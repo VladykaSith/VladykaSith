@@ -11,7 +11,7 @@ As a beginner software development Quality Control (QC) engineer, I possess a so
 <details>
 <summary><strong>🧾 Portfolio</strong></summary>
 
-- [Authorization Form Test Suite](https://docs.google.com/spreadsheets/d/1pp83n8hw03KEgWR1f7QqK3xsSji0A9WSUhuk_cRy_BQ/edit?usp=sharing)
+- [ОПТИМАКРОС (Авторизация существующего пользователя и Отчёт о дефектах для ROBOTX)](https://docs.google.com/spreadsheets/d/1fwSU6Cfv3lTbJLDiCt0rvFAYtQumbEcwwbysKnHg4u4/edit?usp=sharing)
 - [AAA State of Play (Task2)](https://docs.google.com/spreadsheets/d/18B04IpVrE2gb-IU0S5X6WZ0zgroYzyLMq-jIuPBFbVE/edit?usp=sharing)
 - [YaTestCases1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Yandex_Test%20_1.xlsx)
 - [TestCase_for_step4.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/TestCase_for_step4.xlsx)
