@@ -12,7 +12,7 @@ As a beginner software development Quality Control (QC) engineer, I possess a so
 <summary><strong>🧾 Portfolio</strong></summary>
 
 - [ОПТИМАКРОС (Авторизация существующего пользователя и Отчёт о дефектах для ROBOTX)](https://docs.google.com/spreadsheets/d/1fwSU6Cfv3lTbJLDiCt0rvFAYtQumbEcwwbysKnHg4u4/edit?usp=sharing)
-- [Osago_Pairwise_TestDesign.xlsx]()
+- [Osago_Pairwise_TestDesign.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/Osago_Pairwise_TestDesign.xlsx)
 - [AAA State of Play (Task2)](https://docs.google.com/spreadsheets/d/18B04IpVrE2gb-IU0S5X6WZ0zgroYzyLMq-jIuPBFbVE/edit?usp=sharing)
 - [YaTestCases1.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/YaTest_1.xlsx)
 - [TestCase_for_step4.xlsx](https://github.com/VladykaSith/VladykaSith/blob/main/portfolio/TestCase_for_step4.xlsx)
